@@ -2,10 +2,10 @@
 In this post, building a CD pipeline using a model built locally (not on Amazon SageMaker) is described.
 
 ## Steps
-### Model training and registration
+### 1- Model training and registration
 `xgboost_BYOM_register.ipynb` shows first how to train an Xgboost model in scikit-learn and then inject it into Amazon SageMaker's first party XGboost container for scoring and then how to register the model. This addresses the usecase where a customer has already trained their model outside of Amazon SageMaker, but wishes to host it for predictions within Amazon SageMaker.
 
-### Creating a CD pipeline using SageMaker Pipelines templates
+### 2- Creating a CD pipeline using SageMaker Pipelines templates
 In the following steps, creating a CD pipeline using a SageMaker Pipelines template, namely `MLOps template for model deployment`, is shown. One uses this template to automate the deployment of models in the Amazon SageMaker model registry to SageMaker Endpoints for real-time inference. The template provisions an __AWS CodeCommit__ repository with configuration files to specify the model deployment steps, __CloudFormation__ templates to define endpoints as infrastructure, and seed code for testing the endpoint. You can customize the template to suit your requirements or add more tests. __AWS CodePipeline__ is used to orchestrate the model deployment. Model building pipeline: None Code repository: __AWS CodeCommit__ Orchestration: __AWS CodePipeline__
 
 1. From SageMaker Studio console, select Resources, and then select Projects. Then, select `Create Project`.
